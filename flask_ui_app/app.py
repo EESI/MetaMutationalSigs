@@ -1,4 +1,4 @@
-import os, time, subprocess, shutil, glob, zipfile
+import os, time, subprocess, shutil, glob, zipfile, shutil
 from flask import Flask, flash, request, redirect, render_template, Response, send_file, send_from_directory
 from werkzeug.utils import secure_filename
 from SigProfilerMatrixGenerator.scripts import SigProfilerMatrixGeneratorFunc as matGen
@@ -87,34 +87,33 @@ def progress():
 		yield "data:" + str(x) + "\n\n"
 		yield "data:" + str(x) + "\n\n"
 
-		if glob.glob("uploads/*.vcf"):
-			matGen.SigProfilerMatrixGeneratorFunc("MetaMutationalSigs",'GRCh37' , "uploads")
+		if glob.glob("./uploads/*.vcf"):
+			shutil.rmtree("./uploads/MetaMutationalResults")
+			matGen.SigProfilerMatrixGeneratorFunc("MetaMutationalSigs",'GRCh37' , "./uploads")
 			x = x + 33
 			yield "data:" + str(x) + "\n\n"
-			subprocess.call(['Rscript', "../meta_sig_main_flask.r", "uploads" , genome_ref , mutationalPattern , sigflow, sigfit, deconstructSigs])
+			subprocess.call(['Rscript', "../meta_sig_main_flask.r", "./uploads" , genome_ref , mutationalPattern , sigflow, sigfit, deconstructSigs])
 			x = x + 33
 			yield "data:" + str(x) + "\n\n"
-			subprocess.call(['python3.8', "../plot_graphs.py", "uploads"   , mutationalPattern , sigflow, sigfit, deconstructSigs])
+			subprocess.call(['python3.8', "../plot_graphs.py", "./uploads"   , mutationalPattern , sigflow, sigfit, deconstructSigs])
 
-			shutil.rmtree("uploads" + "/input")
-			shutil.rmtree("uploads" + "/logs")
-			shutil.rmtree("uploads" + "/output")
+			shutil.rmtree("./uploads" + "/input")
+			shutil.rmtree("./uploads" + "/logs")
+			shutil.rmtree("./uploads" + "/output")
 
-			files_in_directory = os.listdir("uploads")
+			files_in_directory = os.listdir("./uploads")
 
 			filtered_files = [file for file in files_in_directory if file.endswith(".vcf")]
 
 			for file in filtered_files:
-				path_to_file = os.path.join("uploads", file)
+				path_to_file = os.path.join("./uploads", file)
 				os.remove(path_to_file)
 
 			zipf = zipfile.ZipFile("metaMutationalSignatures_results.zip", 'w', zipfile.ZIP_DEFLATED)
-			os.chdir("/app/flask_ui_app/")
+			shutil.copy("./templates/final_results.html", "./uploads/MetaMutationalResults")
 			zipdir("./uploads/", zipf)
 			zipf.close()
 
-
-			shutil.rmtree("/app/flask_ui_app/uploads")
 			if not os.path.isdir(app.config['UPLOAD_FOLDER']):
 				os.mkdir(app.config['UPLOAD_FOLDER'])
 			x = x + 33
