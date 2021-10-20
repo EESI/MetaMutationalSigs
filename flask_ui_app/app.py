@@ -109,12 +109,12 @@ def progress():
 				os.remove(path_to_file)
 
 			zipf = zipfile.ZipFile("metaMutationalSignatures_results.zip", 'w', zipfile.ZIP_DEFLATED)
-			# os.chdir("")
+			os.chdir("/app/flask_ui_app/")
 			zipdir("./uploads/", zipf)
 			zipf.close()
 
 
-			# shutil.rmtree("uploads")
+			shutil.rmtree("/app/flask_ui_app/uploads")
 			if not os.path.isdir(app.config['UPLOAD_FOLDER']):
 				os.mkdir(app.config['UPLOAD_FOLDER'])
 			x = x + 33
