@@ -98,4 +98,5 @@ All analysis is run locally. No data leaves your computer. The web browser user 
 
 ## Changelog
 - V1 - COSMIC reference signatures V3.1 June 2020
-- V2* Current - COSMIC reference signatures updated to V3.2 March 2020
+- V2 - COSMIC reference signatures updated to V3.2 March 2020
+- V3* Current - Added results HTML page. Now users can see the figures before downloading them.
