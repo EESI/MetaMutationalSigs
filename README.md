@@ -51,20 +51,14 @@ Inside `MetaMutationalResults`, we can find a folder for each tool that was sele
 
 Here is a summary of the files generated: 
 
-|File Name                                      |Format|Description                                                                                          |
-|-----------------------------------------------|------|-----------------------------------------------------------------------------------------------------|
-|Heatmap_contributions_all_sigs_legacy.pdf      |pdf   |Contributions for all COSMIC Legacy SBS signatures to the overall signature.                         |
-|Heatmap_contributions_all_sigs_SBS.pdf         |pdf   |Contributions for all COSMIC V3 SBS signatures.                                                      |
-|Heatmap_COSMIC_legacy.pdf                      |pdf   |Heatmap for difference between the predicted contributions by different tools.  One for each sample. |
-|Heatmap_COSMIC_V3.pdf                          |pdf   |Heatmap for difference between the predicted contributions by different tools.  One for each sample. |
-|legacy_pie_charts.html                         |html  |Interactive pie charts of COSMIC legacy SBS contribution, per sample and for each tool.              |
-|sbs_pie_charts.html                            |html  |Interactive pie charts of COSMIC V3 SBS signature contributions, per sample and for each tool.       |
-|legacy_rmse_bar_plot.pdf                       |pdf   |Reconstruction error using COSMIC Legacy SBS signatures for each tool.                               |
-|sbs_rmse_bar_plot.png                          |pdf   |Reconstruction error using COSMIC V3 SBS signatures for each tool.                                   |
-|toolname_results\legacy_sample_error.csv       |csv   |Data used to create the bar plot.                                                                    |
-|toolname_results\legacy_sample_contribution.csv|csv   |Data used to create heatmap and pie chart.                                                           |
-|toolname_results\sbs_sample_error.csv          |csv   |Data used to create the bar plot.                                                                    |
-|toolname_results\sbs_sample_contribution.csv   |csv   |Data used to create heatmap and pie chart.                                                           |
+| File Name                                              | Format | Description                                                                                                                                                                                                                                                            |
+|--------------------------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Heatmap_contributions_all_sigs_[signature_version].svg | svg    | Contributions from all signatures of the [signature_version] to the overall signature.                                                                                                                                                                                 |
+| Heatmap_[signature_version].svg                        | svg    | Heatmap of cosine similarity between the predicted contributions by different tools for [signature_version].                                                                                                                                                           |
+| [signature_version]_bar_charts.html                    | html   | Bar charts of signature contributions per sample and per tool for [signature_version].                                                                                                                                                                                 |
+| rmse_box_plot.svg                                      | svg    | Box plot of RMSE between the reconstructed signal (from the reference signatures) and the overall signature                                                                                                                                                            |
+| [tool_name]\[signature_version]_sample_error.csv       | csv    | Data about the difference between reconstructed and signal for each signature of [signature_version] for each [tool_name] for each sample.  This is used to create rmse_box_plot.svg                                                                                   |
+| [tool_name]\[signature_version]_contribution.csv       | csv    | Data about the contribution of each signature of [signature_version] for each [tool_name] for each sample. This is used to create the Heatmap_contributions_all_sigs_[singature_version].svg, Heatmap_[signature_version].svg and [signature_version]_bar_charts.html. |
 
 ## FAQs / Resources:
 
