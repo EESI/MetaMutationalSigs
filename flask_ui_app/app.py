@@ -88,7 +88,10 @@ def progress():
 		yield "data:" + str(x) + "\n\n"
 
 		if glob.glob("./uploads/*.vcf"):
-			shutil.rmtree("./uploads/MetaMutationalResults")
+			try:
+				shutil.rmtree("./uploads/MetaMutationalResults")
+			except:
+				pass
 			matGen.SigProfilerMatrixGeneratorFunc("MetaMutationalSigs",'GRCh37' , "./uploads")
 			x = x + 33
 			yield "data:" + str(x) + "\n\n"
@@ -138,4 +141,4 @@ def download_file(name):
         os.path.join(app.config['UPLOAD_FOLDER'], 'MetaMutationalResults') , name, as_attachment=False
     )
 if __name__ == "__main__":
-	app.run(host='0.0.0.0',port=5001,debug=True,threaded=True)
+	app.run(host='0.0.0.0',port=5001,debug=False,threaded=True)
