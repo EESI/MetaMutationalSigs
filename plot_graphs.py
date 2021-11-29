@@ -148,7 +148,7 @@ def run_legacy(sigfit = True, sigflow = True, deconstructSigs= True, mutationalP
         
         for i in range(len(distance_df_list)):
             df = distance_df_list[i]
-            df__ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:])), columns=df["sample"].unique(), index=df["sample"].unique())
+            df__ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine")), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df__)
             plt.tight_layout()
@@ -256,7 +256,7 @@ def run_sbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
         for i in range(sbs_df_list[0].shape[0]):
             temp_df = []
             for index , j in enumerate(sbs_df_list):
-                j["sample"] = sbs_df_list[index]
+                j["sample"] = sbs_df_name_list[index]
                 temp_df.append(list(j.iloc[i,:]))
             _df = pd.DataFrame(temp_df, columns = sbs_df_list[0].columns)
             _df.fillna(0, inplace= True)
@@ -266,7 +266,7 @@ def run_sbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
         sns.set(font_scale=1.7)
         for i in range(len(distance_df_list)):  
             df = distance_df_list[i]
-            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:])), columns=df["sample"].unique(), index=df["sample"].unique())
+            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine" ) ), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df_)
             plt.tight_layout()
@@ -368,7 +368,7 @@ def run_id(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatte
 
         for i in range(len(distance_df_list)):  
             df = distance_df_list[i]
-            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:])), columns=df["sample"].unique(), index=df["sample"].unique())
+            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df_)
             plt.tight_layout()
@@ -472,7 +472,7 @@ def run_dbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
 
         for i in range(len(distance_df_list)):  
             df = distance_df_list[i]
-            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:])), columns=df["sample"].unique(), index=df["sample"].unique())
+            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df_)
             plt.tight_layout()

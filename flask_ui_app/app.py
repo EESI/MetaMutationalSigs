@@ -113,7 +113,7 @@ def progress():
 				os.remove(path_to_file)
 
 			zipf = zipfile.ZipFile("metaMutationalSignatures_results.zip", 'w', zipfile.ZIP_DEFLATED)
-			shutil.copy("./templates/final_results.html", "./uploads/MetaMutationalResults")
+			shutil.copy("./templates/final_results_download.html", "./uploads/MetaMutationalResults/final_results_download.html")
 			zipdir("./uploads/", zipf)
 			zipf.close()
 
@@ -133,7 +133,7 @@ def final_results():
 
 @app.route('/download')
 def download():
-	return send_file("" + "/metaMutationalSignatures_results.zip", attachment_filename="metaMutationalSignatures_results.zip")
+	return send_file( "metaMutationalSignatures_results.zip", attachment_filename="metaMutationalSignatures_results.zip")
 
 @app.route("/uploads/<path:name>")
 def download_file(name):
