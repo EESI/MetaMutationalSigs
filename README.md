@@ -90,6 +90,10 @@ Your files need to be in VCF format. For more information https://www.internatio
 
 All analysis is run locally. No data leaves your computer. The web browser user interface is also running locally on your computer, so you can feel free to analyze your protected data.
 
+### You can also run the analysis on Terra using the Docker image
+
+You can use this workflow as a starting point: https://portal.firecloud.org/?return=terra#methods/MetaMutationalSigs/MetaMutationalSigs/1
+
 ## Changelog
 - V1 - COSMIC reference signatures V3.1 June 2020
 - V2 - COSMIC reference signatures updated to V3.2 March 2020
