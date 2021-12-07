@@ -1,14 +1,13 @@
 """MetaMutationalSigs
 Usage:
-	metaMutatationalSignatures.py --i=<file> [--output=<outdir>] [--genome=<genome>] [--mutationalSignatures] [--sigflow] [--sigfit] [--deconstructSigs]
-	metaMutatationalSignatures.py --i=<file> [--output=<outdir>]
+	metaMutatationalSignatures.py [--output=<outdir>] [--genome=<genome>] [--mutationalSignatures] [--sigflow] [--sigfit] [--deconstructSigs]
+	metaMutatationalSignatures.py [--output=<outdir>]
 	metaMutatationalSignatures.py --browser
 	metaMutatationalSignatures.py -h | --help
 	metaMutatationalSignatures.py --version
 Options:
 	--help     Show this screen.
 	--version     Show version.
-	--i <file>      Input directory with VCF files.
 	--output <outdir>		output file path [default: ./metaMutationalSignatures_results.zip/].
 	--genome <genome>		genome build, can be GRCh37, GRCh38 [default: GRCh37].
 	--browser    Open in browser.
@@ -44,7 +43,6 @@ if __name__ == '__main__':
 		else:
 			from SigProfilerMatrixGenerator import install as genInstall
 			from SigProfilerMatrixGenerator.scripts import SigProfilerMatrixGeneratorFunc as matGen
-			input_dir = arguments["--i"]
 			output_dir = arguments["--output"]
 			genome_ref = arguments["--genome"]
 			runMutationalPatterns = arguments["--mutationalSignatures"]
@@ -52,8 +50,7 @@ if __name__ == '__main__':
 			runsigfit = arguments["--sigfit"]
 			runDeconstructSigs = arguments["--deconstructSigs"]
 
-			if input_dir ==  None:
-				input_dir = "/app/input_vcf_dir"
+			input_dir = "/app/input_vcf_dir"
 
 			if output_dir ==  None:
 				output_dir = "/app/input_vcf_dir"
