@@ -134,6 +134,8 @@ def run_legacy(sigfit = True, sigflow = True, deconstructSigs= True, mutationalP
         plt.savefig(r_output_file_dir + "/Heatmap_exposures_all_sigs_legacy.png", bbox_inches='tight')
         
         distance_df_list = []
+        sample_name_df = list(legacy_df_list[0]["sample"])
+
         for i in range(legacy_df_list[0].shape[0]):
             temp_df = []
             for index , j in enumerate(legacy_df_list):
@@ -149,9 +151,12 @@ def run_legacy(sigfit = True, sigflow = True, deconstructSigs= True, mutationalP
             df = distance_df_list[i]
             df__ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine")), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
-            sns.heatmap(df__)
+            heatmap = sns.heatmap(df__)
+            heatmap.set(xlabel=None)
+            heatmap.set(ylabel=None)
+
             plt.tight_layout()
-            plt.title("Heatmap legacy SBS " + legacy_df_list[0].iloc[i,0] )
+            plt.title("Heatmap legacy SBS " + sample_name_df[i] )
         
         plt.savefig(r_output_file_dir + "/Heatmap_legacy.svg", bbox_inches='tight')
         plt.savefig(r_output_file_dir + "/Heatmap_legacy.png", bbox_inches='tight')
@@ -252,6 +257,8 @@ def run_sbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
         plt.savefig(r_output_file_dir + "/Heatmap_exposures_all_sigs_SBS.png", bbox_inches='tight')
         
         distance_df_list = []
+        sample_name_df = list(sbs_df_list[0]["sample"])
+
         for i in range(sbs_df_list[0].shape[0]):
             temp_df = []
             for index , j in enumerate(sbs_df_list):
@@ -267,9 +274,12 @@ def run_sbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
             df = distance_df_list[i]
             df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine" ) ), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
-            sns.heatmap(df_)
+            heatmap = sns.heatmap(df_)
+            heatmap.set(xlabel=None)
+            heatmap.set(ylabel=None)
+
             plt.tight_layout()
-            plt.title("Heatmap V3 SBS " + str(sbs_df_list[0].iloc[i,0]))
+            plt.title("Heatmap V3 SBS " + + sample_name_df[i])
         
         plt.savefig(r_output_file_dir + "/Heatmap_SBS.svg", bbox_inches='tight')
         plt.savefig(r_output_file_dir + "/Heatmap_SBS.png", bbox_inches='tight')
@@ -353,6 +363,8 @@ def run_id(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatte
         plt.savefig(r_output_file_dir + "/Heatmap_exposures_all_sigs_ID.png", bbox_inches='tight')
         
         distance_df_list = []
+        sample_name_df = list(id_df_list[0]["sample"])
+
         for i in range(id_df_list[0].shape[0]):
             temp_df = []
             for index , j in enumerate(id_df_list):
@@ -369,9 +381,13 @@ def run_id(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatte
             df = distance_df_list[i]
             df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
-            sns.heatmap(df_)
+
+            heatmap = sns.heatmap(df_)
+            heatmap.set(xlabel=None)
+            heatmap.set(ylabel=None)
+
             plt.tight_layout()
-            plt.title("Heatmap ID " + str(id_df_list[0].iloc[i,0]))
+            plt.title("Heatmap ID "  + sample_name_df[i])
         
         plt.savefig(r_output_file_dir + "/Heatmap_ID.svg", bbox_inches='tight')
         plt.savefig(r_output_file_dir + "/Heatmap_ID.png", bbox_inches='tight')
@@ -457,6 +473,8 @@ def run_dbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
         plt.savefig(r_output_file_dir + "/Heatmap_exposures_all_sigs_DBS.png", bbox_inches='tight')
         
         distance_df_list = []
+        sample_name_df = list(dbs_df_list[0]["sample"])
+
         for i in range(dbs_df_list[0].shape[0]):
             temp_df = []
             for index , j in enumerate(dbs_df_list):
@@ -473,10 +491,13 @@ def run_dbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
             df = distance_df_list[i]
             df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
-            sns.heatmap(df_)
+            heatmap = sns.heatmap(df_)
+            heatmap.set(xlabel=None)
+            heatmap.set(ylabel=None)
+
             plt.tight_layout()
 
-            plt.title("Heatmap DBS " + str(dbs_df_list[0].iloc[i,0]))
+            plt.title("Heatmap DBS "  + sample_name_df[i])
         
         plt.savefig(r_output_file_dir + "/Heatmap_DBS.svg", bbox_inches='tight')
         plt.savefig(r_output_file_dir + "/Heatmap_DBS.png", bbox_inches='tight')

@@ -25,7 +25,7 @@ https://hub.docker.com/r/pp535/metamutationalsigs
 VCF files.
 
 To run *metamutationalsigs* without using *sigflow* and *sigfit* on the data from your VCF file directory `C:\Users\...full_path...\docker_input_test`.  Just replace ``C:\Users\...full_path...\docker_input_test/`` with absolute path to your input directory that has VCF files. The results will be in a zipped file in your input directory.<br> 
-``docker run --rm -v C:\Users\...full_path...\docker_input_test/:/app/input_vcf_dir pp535/metamutationalsigs`. 
+`docker run --rm -v C:\Users\...full_path...\docker_input_test/:/app/input_vcf_dir pp535/metamutationalsigs`. All tools are run by default, if you wish to not run a tool, you can provide its name as a flag such as `docker run --rm -v C:\Users\...full_path...\docker_input_test/:/app/input_vcf_dir pp535/metamutationalsigs --mutationalSignatures` would run all other tools except for mutationalSignatures.
 
 
 We have browser UI available as well: <br>
