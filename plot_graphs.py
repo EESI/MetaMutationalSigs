@@ -76,8 +76,8 @@ def run_legacy(sigfit = True, sigflow = True, deconstructSigs= True, mutationalP
             mutationalPatterns_strict_legacy_exposure_df = mutationalPatterns_strict_legacy_exposure_df.div(mutationalPatterns_strict_legacy_exposure_df.sum(axis=1), axis=0)
             mutationalPatterns_strict_legacy_exposure_df.reset_index(inplace= True)
 
-            mutationalPatters_legacy_fig = make_piecharts(mutationalPatterns_legacy_exposure_df, pie_chart_rows, pie_chart_cols, "COSMIC V2 'Legacy' SBS exposures  data MutationalPatterns")    
-            mutationalPatters_strict_legacy_fig = make_piecharts(mutationalPatterns_strict_legacy_exposure_df, pie_chart_rows, pie_chart_cols, "COSMIC V2 'Legacy' SBS exposures data MutationalPatterns Strict")                
+            mutationalPatterns_legacy_fig = make_piecharts(mutationalPatterns_legacy_exposure_df, pie_chart_rows, pie_chart_cols, "COSMIC V2 'Legacy' SBS exposures  data MutationalPatterns")    
+            mutationalPatterns_strict_legacy_fig = make_piecharts(mutationalPatterns_strict_legacy_exposure_df, pie_chart_rows, pie_chart_cols, "COSMIC V2 'Legacy' SBS exposures data MutationalPatterns Strict")                
             legacy_df_list.append(mutationalPatterns_legacy_exposure_df.sort_values(by=["sample"]))
             legacy_df_name_list.append("mutationalPatterns")
             legacy_df_list.append(mutationalPatterns_strict_legacy_exposure_df.sort_values(by=["sample"]))
@@ -111,8 +111,8 @@ def run_legacy(sigfit = True, sigflow = True, deconstructSigs= True, mutationalP
             if sigflow:
                 f.write(sigflow_legacy_exposure_df_fig.to_html(full_html=False, include_plotlyjs='cdn'))
             if mutationalPattern:
-                f.write(mutationalPatters_legacy_fig.to_html(full_html=False, include_plotlyjs='cdn'))
-                f.write(mutationalPatters_strict_legacy_fig.to_html(full_html=False, include_plotlyjs='cdn'))
+                f.write(mutationalPatterns_legacy_fig.to_html(full_html=False, include_plotlyjs='cdn'))
+                f.write(mutationalPatterns_strict_legacy_fig.to_html(full_html=False, include_plotlyjs='cdn'))
             if sigfit:
                 f.write(sigfit_legacy_exposure_df_fig.to_html(full_html=False, include_plotlyjs='cdn'))
             if deconstructSigs:
@@ -316,7 +316,7 @@ def run_id(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatte
 
             id_mutational_patters_fig = make_piecharts(mutationalPatterns_id_exposure_df, pie_chart_rows, pie_chart_cols, "COSMIC V3 'ID' exposures  data MutationalPatterns")    
             id_df_list.append(mutationalPatterns_id_exposure_df.sort_values(by=["sample"]))
-            id_df_name_list.append("mutationalPatters")
+            id_df_name_list.append("mutationalPatterns")
         if deconstructSigs:
             deconstructSigs_id_exposure_df = pd.read_csv(r_output_file_dir + "/deconstructsigs_results/indel_sample_exposures.csv")
             deconstructSigs_id_exposure_df.rename( columns = {"Unnamed: 0": "sample"}, inplace= True)
@@ -425,7 +425,7 @@ def run_dbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
 
             dbs_mutational_patters_fig = make_piecharts(mutationalPatterns_dbs_exposure_df, pie_chart_rows, pie_chart_cols, "COSMIC V3 'DBS' exposures  data MutationalPatterns")    
             dbs_df_list.append(mutationalPatterns_dbs_exposure_df.sort_values(by=["sample"]))
-            dbs_df_name_list.append("mutationalPatters")
+            dbs_df_name_list.append("mutationalPatterns")
         if deconstructSigs:
             deconstructSigs_dbs_exposure_df = pd.read_csv(r_output_file_dir + "/deconstructsigs_results/dbs_sample_exposures.csv")
             deconstructSigs_dbs_exposure_df.rename( columns = {"Unnamed: 0": "sample"}, inplace= True)
