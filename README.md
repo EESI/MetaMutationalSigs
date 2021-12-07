@@ -25,12 +25,12 @@ https://hub.docker.com/r/pp535/metamutationalsigs
 VCF files.
 
 To run *metamutationalsigs* without using *sigflow* and *sigfit* on the data from your VCF file directory `C:\Users\...full_path...\docker_input_test`.  Just replace ``C:\Users\...full_path...\docker_input_test/`` with absolute path to your input directory that has VCF files. The results will be in a zipped file in your input directory.<br> 
-``docker run --rm -it -v C:\Users\...full_path...\docker_input_test/:/app/input_vcf_dir pp535/metamutationalsigs  --i "input_vcf_dir" --sigflow --sigfit``
+``docker run --rm -v C:\Users\...full_path...\docker_input_test/:/app/input_vcf_dir pp535/metamutationalsigs`. 
 
 
 We have browser UI available as well: <br>
 
-``docker run --rm -it -p 5001:5001 -v C:\Users\...full_path...\docker_input_test/:/app/input_vcf_dir pp535/metamutationalsigs --browser``
+``docker run --rm -p 5001:5001 pp535/metamutationalsigs --browser``
 
 Just replace ``C:\Users\...full_path...\docker_input_test/`` with absolute path to your input directory that has VCF files. Then go to your browser at http://localhost:5001/ for the browser user interface.
 
@@ -94,3 +94,10 @@ All analysis is run locally. No data leaves your computer. The web browser user 
 - V1 - COSMIC reference signatures V3.1 June 2020
 - V2 - COSMIC reference signatures updated to V3.2 March 2020
 - V3* Current - Added results HTML page. Now users can see the figures before downloading them.
+
+## Issues with Docker
+
+`docker run --rm -v C:\Users\...full_path...\docker_input_test/:/app/input_vcf_dir pp535/metamutationalsigs`
+
+- --rm means delete the container once execution is finished. This is done to free up memory after the results are extracted.
+- -v gives the path of the directory that we want to mount.

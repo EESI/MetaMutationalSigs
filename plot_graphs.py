@@ -12,7 +12,6 @@ import sys, distutils, os
 
 np.random.seed(1234)
 
-
 def make_piecharts(data_df, n_rows, n_cols, fig_title):
     specs_list = []
     subplot_coordinate = []
@@ -148,7 +147,7 @@ def run_legacy(sigfit = True, sigflow = True, deconstructSigs= True, mutationalP
         
         for i in range(len(distance_df_list)):
             df = distance_df_list[i]
-            df__ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine")), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
+            df__ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine")), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df__)
             plt.tight_layout()
@@ -266,7 +265,7 @@ def run_sbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
         sns.set(font_scale=1.7)
         for i in range(len(distance_df_list)):  
             df = distance_df_list[i]
-            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine" ) ), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
+            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine" ) ), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df_)
             plt.tight_layout()
@@ -368,7 +367,7 @@ def run_id(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatte
 
         for i in range(len(distance_df_list)):  
             df = distance_df_list[i]
-            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
+            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df_)
             plt.tight_layout()
@@ -472,7 +471,7 @@ def run_dbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
 
         for i in range(len(distance_df_list)):  
             df = distance_df_list[i]
-            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"].unique(), index=df["sample"].unique()).apply(lambda x : (x -1)*-1 )
+            df_ = pd.DataFrame(squareform(pdist(df.iloc[:, 1:] , metric="cosine") ), columns=df["sample"], index=df["sample"]).apply(lambda x : (x -1)*-1 )
             ax = fig.add_subplot(rows, columns, i+1)    
             sns.heatmap(df_)
             plt.tight_layout()
