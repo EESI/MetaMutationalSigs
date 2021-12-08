@@ -279,7 +279,7 @@ def run_sbs(sigfit = True, sigflow = True, deconstructSigs= True, mutationalPatt
             heatmap.set(ylabel=None)
 
             plt.tight_layout()
-            plt.title("Heatmap V3 SBS " + + sample_name_df[i])
+            plt.title("Heatmap V3 SBS " + sample_name_df[i])
         
         plt.savefig(r_output_file_dir + "/Heatmap_SBS.svg", bbox_inches='tight')
         plt.savefig(r_output_file_dir + "/Heatmap_SBS.png", bbox_inches='tight')
